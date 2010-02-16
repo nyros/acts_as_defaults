@@ -1,0 +1,22 @@
+This plugin is used to set the default options for Activerecord find method, This is model independent so that you can set any number of filters to any of model.
+Steps to install it
+1. First install this plugin into your rails application
+2. Then add below lines to your model class
+Ex1: 
+class User < ActiveRecord::Base
+default_find_option :order, :age
+default_find_option :conditions, "gender = 'male'"
+end
+So when you call User.find(:all), It will get Users by adding these filters, like "order by age" and gender="male";
+
+Ex2: 
+class Employee < ActiveRecord::Base
+default_find_option :order, 'experience DESC'
+default_find_option :conditions, "sal > '10000'"
+end
+So when you call Employee.find(:all), It will get Employees in the order of experienced employees first and so many conditions you can set for extra filters.
+
+
+
+
+
